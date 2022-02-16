@@ -1,0 +1,76 @@
+const Product = require("../models/product");
+
+let product;
+
+exports.getAddProducts = (req, res, next) => {
+    Product.fetchAll(products => {
+        res.render('admin/add-product', {
+            prods: products,
+            docTitle: 'Admin Add Product',
+            path: '/admin/add-product',
+            hasProducts: products.length > 0,
+            activeAddProduct: true,
+            formCSS: true,
+            productCSS: true
+        });
+    });
+}
+
+exports.getEditProducts = (req, res, next) => {
+    // const editMode = req.query.edit; // For Using Query params 
+    const id = req.params.id;
+    Product.findById(id, product => {
+        res.render('admin/edit-product', {
+            product: product,
+            docTitle: 'Admin Edit Product',
+            path: '/admin/edit-product',
+            activeProduct: true,
+            formCSS: true,
+            productCSS: true
+        });
+    })
+    // res.sendFile(path.join(rootDir, 'views', 'edit-product.html'));
+    
+}
+
+exports.getProducts = (req, res, next) => {
+    // console.log('Add Product Form');
+    const products = Product.fetchAll(products => {
+        res.render('admin/product-list', {
+            prods: products,
+            docTitle: 'Admin Products',
+            path: '/admin/products',
+            hasProducts: products.length > 0,
+            activeProduct: true,
+            formCSS: true,
+            productCSS: true
+        });
+    });
+}
+
+
+exports.postAddProducts = (req, res, next) => {
+    const obj = JSON.parse(JSON.stringify(req.body)); // req.body = [Object: null prototype] { title: 'yenum' }
+    console.log(obj); // { title: 'product' }
+    product = new Product(null, obj.title, obj.imageUrl, obj.description, obj.price);
+    product.save();
+    // products.push(obj);
+    res.redirect('/')
+};
+
+exports.postEditProducts = (req, res, next) => {
+    const obj = JSON.parse(JSON.stringify(req.body)); // req.body = [Object: null prototype] { title: 'yenum' }
+    // console.log(obj); // { title: 'product' }
+    product = new Product(obj.id, obj.title, obj.imageUrl, obj.description, obj.price);
+    product.save();
+    // products.push(obj);
+    res.redirect('/admin/products')
+};
+
+exports.postDeleteProducts = (req, res, next) => {
+    const obj = JSON.parse(JSON.stringify(req.body)); // req.body = [Object: null prototype] { title: 'yenum' }
+    // console.log(obj); // { title: 'product' }
+    Product.deleteById(obj.productId);
+    // products.push(obj);
+    res.redirect('/admin/products')
+};

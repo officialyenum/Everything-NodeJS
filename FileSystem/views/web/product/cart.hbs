@@ -1,0 +1,17 @@
+<main>
+    <h1>Your Cart</h1>
+    {{#if hasProducts}}
+        <ul>
+            {{#each products}}
+                <li class="card__header">
+                    <p>
+                        {{ this.productData.title }} ({{ this.qty }})
+                    </p>
+                    {{> deleteCartBtn product=this.productData }}
+                </li>
+            {{/each}}
+        </ul>
+    {{else}}
+        <h1>No Products Found in Cart !</h1>
+    {{/if}}
+</main>
