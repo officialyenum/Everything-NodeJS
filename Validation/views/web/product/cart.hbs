@@ -1,0 +1,24 @@
+<main>
+    <h1>Your Cart</h1>
+    <main>
+    {{#if hasProducts}}
+        <ul class="cart__item-list">
+            {{#each products}}
+                <li class="cart__item">
+                    <h1>{{ this.productId.title }} </h1>
+                    <h2>Quantity : {{ this.quantity }}</h2>
+                    {{#if ../isAuthenticated}}    
+                        {{> deleteCartBtn product=this }}
+                    {{/if}}
+                </li>
+            {{/each}}
+        </ul>
+        <hr>
+        <div class="centered">
+            {{> orderNowBtn }}
+        </div>
+    {{else}}
+        <h1>No Products Found in Cart !</h1>
+    {{/if}}
+    </main>
+</main>

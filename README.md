@@ -43,7 +43,7 @@ Advanced Authentication :
     - password reset
     - token creation
     - password update logic
-Validations :
+Validation :
     - set up
     - validation error messages
     - custom validators
