@@ -1,0 +1,22 @@
+<main>
+    <h1>{{ prod.title }}</h1>
+        <div class="grid">
+                <article class="card product-item">
+                    <header class="card__header">
+                        <h1 class="product__title">
+                            {{ prod.title }}
+                        </h1>
+                        <div class="card__image">
+                            <img src="{{ prod.imageUrl }}" alt="product image">
+                        </div>
+                        <div class="card__content">
+                            <h2 class="product__price">$ {{ prod.price }}</h2>
+                            <p class="product__description">{{ prod.description }}</p>
+                        </div>
+                        <div class="card__actions">
+                            {{> addCartBtn product=prod }}
+                        </div>
+                    </header>
+                </article>
+        </div>
+</main>
