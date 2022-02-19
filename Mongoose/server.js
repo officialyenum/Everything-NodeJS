@@ -5,6 +5,8 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 
 const expressHbs = require("express-handlebars");
+const dotenv = require("dotenv");
+dotenv.config();
 const User = require("./models/user");
 
 const app = express();
@@ -62,9 +64,7 @@ app.use("/admin", adminRoutes);
 app.use(webRoutes);
 
 mongoose
-  .connect(
-    "mongodb+srv://yenum:chucky2020@cluster0.ylglq.mongodb.net/shop?retryWrites=true&w=majority"
-  )
+  .connect(process.env.MONGODB_URI)
   .then((result) => {
     User.findOne()
       .lean()

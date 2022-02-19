@@ -8,14 +8,15 @@ const csrf = require("csurf");
 const bodyParser = require("body-parser");
 const expressHbs = require("express-handlebars");
 const flash = require('connect-flash');
+const dotenv = require("dotenv");
+dotenv.config();
+
 const User = require("./models/user");
 
-const MONGODB_URI =
-  "mongodb+srv://yenum:chucky2020@cluster0.ylglq.mongodb.net/shop";
 const app = express();
 
 const store = new MongoDBStore({
-  uri: MONGODB_URI,
+  uri: process.env.MONGODB_URI,
   collection: "sessions",
 });
 const csrfProtection = csrf();
@@ -89,7 +90,7 @@ app.use(authRoutes);
 app.use(webRoutes);
 
 mongoose
-  .connect(MONGODB_URI)
+  .connect(process.env.MONGODB_URI)
   .then((result) => {
     User.findOne()
       .lean()

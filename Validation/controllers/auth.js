@@ -3,16 +3,15 @@ const crypto = require("crypto");
 const bcrypt = require("bcryptjs");
 const User = require("../models/user");
 const nodemailer = require("nodemailer");
-const sgTransport = require("nodemailer-sendgrid-transport");
 
 const { validationResult } = require("express-validator");
-const NODEMAILER_API_KEY =
-  "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";
+
+const sgTransport = require("nodemailer-sendgrid-transport");
 
 const transporter = nodemailer.createTransport(
   sgTransport({
     auth: {
-      api_key: NODEMAILER_API_KEY,
+      api_key: process.env.NODEMAILER_API_KEY,
     },
   })
 );

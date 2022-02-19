@@ -6,16 +6,18 @@ const session = require("express-session");
 const MongoDBStore = require("connect-mongodb-session")(session);
 const bodyParser = require("body-parser");
 const expressHbs = require("express-handlebars");
+const dotenv = require("dotenv");
+dotenv.config();
+
 const User = require("./models/user");
 
-const MONGODB_URI =
-  "mongodb+srv://yenum:chucky2020@cluster0.ylglq.mongodb.net/shop";
 const app = express();
 
 const store = new MongoDBStore({
-  uri: MONGODB_URI,
+  uri: process.env.MONGODB_URI,
   collection: "sessions",
 });
+const csrfProtection = csrf();
 
 // Setting up body parser
 //Using handleBars Engine
@@ -76,7 +78,7 @@ app.use(authRoutes);
 app.use(webRoutes);
 
 mongoose
-  .connect(MONGODB_URI)
+  .connect(process.env.MONGODB_URI)
   .then((result) => {
     User.findOne()
       .lean()
