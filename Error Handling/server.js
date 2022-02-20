@@ -73,6 +73,15 @@ app.use(flash());
 //     next();
 // });
 app.use((req, res, next) => {
+  res.locals.isAuthenticated = req.session.isLoggedIn;
+  res.locals.csrfToken = req.csrfToken();
+  // res.locals.errorMessage = req.flash('error');
+  // res.locals.successMessage = req.flash('success');
+  next();
+});
+
+app.use((req, res, next) => {
+  // throw new Error("Sync Dummy");
   if (!req.session.user) {
     return next();
   }
@@ -81,20 +90,23 @@ app.use((req, res, next) => {
       req.user = user;
       next();
     })
-    .catch((err) => console.log(err));
-});
-
-app.use((req, res, next) => {
-  res.locals.isAuthenticated = req.session.isLoggedIn;
-  res.locals.csrfToken = req.csrfToken();
-  // res.locals.errorMessage = req.flash('error');
-  // res.locals.successMessage = req.flash('success');
-  next();
+    .catch((err) => {
+      next(new Error(err));
+    });
 });
 
 app.use("/admin", adminRoutes);
 app.use(authRoutes);
 app.use(webRoutes);
+
+app.use((error, req, res, next) => {
+  // res.redirect("/500");
+  res.status(500).render("web/500", {
+    docTitle: "An error Occured",
+    path: "/500",
+    isAuthenticated: req.session.isLoggedIn,
+  });
+});
 
 mongoose
   .connect(process.env.MONGODB_URI)

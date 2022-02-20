@@ -17,6 +17,7 @@ router.post("/cart-delete-item", isAuth, shopController.deleteCartItem);
 router.post("/create-order", isAuth, shopController.postOrder);
 router.get("/orders", isAuth, shopController.getOrders);
 // router.get('/checkout', shopController.getCheckout);
+router.use("/500", errorController.get500ErrorPage);
 
 router.use(errorController.getNoPageFound);
 
