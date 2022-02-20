@@ -1,0 +1,46 @@
+<main>
+  <form class="login-form" action="/signup" method="POST" novalidate>
+    <input type="hidden" name="_csrf" value="{{csrfToken}}" />
+    <div class="form-control">
+      <label for="username">Username</label>
+      <input
+      class="{{#each validationErrors}} {{#if_eq this.param "username"}} invalid {{else}} '' {{/if_eq}} {{/each}}"
+        type="text"
+        name="username"
+        id="username"
+        value="{{oldInput.username}}"
+      />
+    </div>
+    <div class="form-control">
+      <label for="email">Email</label>
+      
+      <input 
+        class="{{#each validationErrors}} {{#if_eq this.param "email"}} invalid {{else}}  {{/if_eq}} {{/each}}"
+        type="email" name="email" id="email" value="{{oldInput.email}}" />
+    </div>
+    <div class="form-control">
+      <label for="password">Password</label>
+      <input
+
+        
+        class="{{#each validationErrors}} {{#if_eq this.param "password" }} invalid {{else}}  {{/if_eq}} {{/each}}"
+        type="password"
+        name="password"
+        id="password"
+        value="{{oldInput.password}}"
+      />
+    </div>
+    <div class="form-control">
+      <label for="confirmPassword">Confirm Password</label>
+      <input
+        class=""
+        type="password"
+        name="confirmPassword"
+        id="confirmPassword"
+        value="{{oldInput.confirmPassword}}"
+      />
+    </div>
+
+    <button class="btn" type="submit">Sign Up</button>
+  </form>
+</main>

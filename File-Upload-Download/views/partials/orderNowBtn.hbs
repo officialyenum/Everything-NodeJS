@@ -1,0 +1,6 @@
+<form action="/create-order" method="POST">
+    <input type="hidden" name="_csrf" value="{{ csrfToken }}"/>
+    <input type="hidden" name="product_id" id="product_id" value="1">
+    {{!-- <input type="hidden" name="product_id" id="product_id" value="{{ product.id }}"> --}}
+    <button type="submit" class="btn"> Order Now !</button>
+</form>

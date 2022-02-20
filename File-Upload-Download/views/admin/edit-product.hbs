@@ -1,0 +1,27 @@
+
+<main>
+    <form class="product-form" action="/admin/edit-product" method="POST">
+    <input type="hidden" name="_csrf" value="{{ csrfToken }}"/>
+        <input type="hidden" name="id" id="id" value="{{ product._id }}">
+        <div class="form-control">
+            <label for="title">Title</label>
+            <input class="{{#each validationErrors}} {{#if_eq this.param "title"}} invalid {{else}}  {{/if_eq}} {{/each}}" type="text" name="title" id="title" value={{ product.title }}>
+        </div>
+        <div class="form-control">
+            <label for="imageUrl">Image Url</label>
+            <input class="{{#each validationErrors}} {{#if_eq this.param "imageUrl"}} invalid {{else}}  {{/if_eq}} {{/each}}" name="imageUrl" id="imageUrl" value={{ product.imageUrl }}>
+            <img src={{ product.imageUrl }} alt="" width="300" height="200" style="object-fit: cover;">
+        </div>
+        <div class="form-control">
+            <label for="price">Price</label>
+            <input class="{{#each validationErrors}} {{#if_eq this.param "price"}} invalid {{else}}  {{/if_eq}} {{/each}}" type="number" name="price" id="price" step="0.01" value={{ product.price }}>
+        </div>
+        <div class="form-control">
+            <label for="description">Description</label>
+            <textarea class="{{#each validationErrors}} {{#if_eq this.param "description"}} invalid {{else}}  {{/if_eq}} {{/each}}" name="description" id="descripton" rows="5">{{ product.description }}</textarea>
+        </div>
+
+        <button class="btn" type="submit">Update Product</button>
+    </form>
+    <hr>
+</main>
