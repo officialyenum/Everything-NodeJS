@@ -1,0 +1,18 @@
+<main>
+  <form class="login-form" action="/login" method="POST" novalidate>
+    <input type="hidden" name="_csrf" value="{{ csrfToken }}"/>
+    <div class="form-control">
+      <label for="email">Email</label>
+      <input class="{{#each validationErrors}} {{#if_eq this.param "email"}} invalid {{else}}  {{/if_eq}} {{/each}}" type="email" name="email" id="email" value="{{oldInput.email}}" />
+    </div>
+    <div class="form-control">
+      <label for="password">Password</label>
+      <input class="{{#each validationErrors}} {{#if_eq this.param "password"}} invalid {{else}}  {{/if_eq}} {{/each}}" type="password" name="password" id="password"value="{{oldInput.password}}" />
+    </div>
+
+    <button class="btn" type="submit">Login</button>
+  </form>
+  <div class="center">
+    <a href="/reset">Reset Password</a>
+  </div>
+</main>

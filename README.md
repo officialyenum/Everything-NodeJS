@@ -21,7 +21,7 @@ This is basically my Pratical example or implementation on how to build a node J
 
   - defining Model
   - CRUD
-  - Relatinship
+  - Relationship
 
 - [NoSQL-and-MongoDB]:
 
@@ -33,7 +33,7 @@ This is basically my Pratical example or implementation on how to build a node J
 
   - defining Model
   - CRUD
-  - Relatinship
+  - Relationship
 
 - [Session-&-Cookies]:
 
@@ -93,4 +93,10 @@ This is basically my Pratical example or implementation on how to build a node J
   - re-using pagination logic
 
 - [Async-Request]:
-  - setup
+  - adding client side js code
+  - sending and handling background requests
+
+- [Payment-With-Stripe]:
+  - adding checkout Page
+  - setting up stripe
+
