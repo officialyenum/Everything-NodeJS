@@ -68,3 +68,29 @@ This is basically my Pratical example or implementation on how to build a node J
   - async validations
   - keeping user inputs
   - sanitizing data
+
+- [Error-Handling]:
+  - set up
+  - returning error pages
+  - express error handling middlewares
+  - status codes
+
+- [File-Upload-and-Download]:
+  - setting up multer
+  - handling file uploads with multer
+  - filter files by mimetype
+  - serving static images
+  - restricting file access
+  - streaming data vs preloading data
+  - generating pdf files with data
+  - deleting files
+
+- [Pagination]:
+  - adding page query and setup
+  - using mongoose skip and limit query
+  - passing pagination parameters to view
+  - adding dynamic pagination buttons
+  - re-using pagination logic
+
+- [Async-Request]:
+  - setup
