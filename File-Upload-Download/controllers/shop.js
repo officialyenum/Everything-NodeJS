@@ -1,6 +1,9 @@
+const fs = require("fs");
+const path = require("path");
 const Product = require("../models/product");
 const User = require("../models/user");
 const Order = require("../models/order");
+const PDFDocument = require("pdfkit");
 // const Cart = require("../models/cart");
 // const Order = require("../models/order");
 // let product;
@@ -12,9 +15,78 @@ const Order = require("../models/order");
 //     activeCheckout: true,
 //   });
 // };
+exports.getInvoice = (req, res, next) => {
+  const orderId = req.params.orderId;
+  Order.findById(orderId)
+    .then((order) => {
+      console.log(order);
+      if (!order) {
+        next(new Error("No Orders Found"));
+      }
+      if (order.user.userId.toString() !== req.user._id.toString()) {
+        next(new Error("Unauthorized"));
+      }
+      const invoiceName = "invoice-" + orderId + ".pdf";
+      const invoicePath = path.join("data", "invoices", invoiceName);
+      console.log(orderId);
+      console.log(invoicePath);
 
+      const pdfDoc = new PDFDocument();
+      pdfDoc.pipe(fs.createWriteStream(invoicePath));
+      res.setHeader("Content-Type", "application/pdf");
+      res.setHeader(
+        "Content-Disposition",
+        'inline; filename="' + invoiceName + '"'
+      );
+      pdfDoc.pipe(res);
+      pdfDoc.fontSize(26).text("Invoice", {
+        underline: true,
+      });
+      pdfDoc.fontSize(14).text("---------------------------------------");
+      let totalPrice = 0;
+      order.products.forEach((prod) => {
+        totalPrice += prod.quantity * prod.product.price;
+        pdfDoc
+          .fontSize(14)
+          .text(
+            prod.product.title +
+              " - " +
+              prod.quantity +
+              " x $" +
+              prod.product.price
+          );
+      });
+      pdfDoc.text("---------------------------------------");
+      pdfDoc.fontSize(20).text("Total Price : $" + totalPrice);
+      pdfDoc.end();
+      // fs.readFile(invoicePath, (err, data) => {
+      //   if (err) {
+      //     next(err);
+      //   }
+      //   console.log(data);
+      //   res.setHeader("Content-Type", "application/pdf");
+      //   // Direct download / print
+      //   res.setHeader(
+      //     "Content-Disposition",
+      //     'attachment; filename="' + invoiceName + '"'
+      //   );
+      //   // View before download / print
+      //   // res.setHeader(
+      //   //   "Content-Disposition",
+      //   //   'inline; filename="' + invoiceName + '"'
+      //   // );
+      //   res.send(data);
+      // });
+
+      // const file = fs.createReadStream(invoicePath);
+
+      // file.pipe(res);
+    })
+    .catch((err) => {
+      next(err);
+    });
+};
 exports.getCart = (req, res, next) => {
-  console.log(req.user);
   console.log(req.session.user);
   req.user
     .populate("cart.items.productId")
@@ -57,7 +129,8 @@ exports.deleteCartItem = (req, res, next) => {
 };
 
 exports.postCart = (req, res, next) => {
-  console.log(req.user);
+  console.log("posting to cart");
+  console.log(req.body.product_id);
   console.log(req.session.user);
   const obj = JSON.parse(JSON.stringify(req.body));
   const product_id = obj.product_id;
@@ -72,9 +145,10 @@ exports.postCart = (req, res, next) => {
       res.redirect("/cart");
     })
     .catch((err) => {
-      const error = new Error(err);
-      error.httpStatusCode = 500;
-      return next(error);
+      console.log(err);
+      // const error = new Error(err);
+      // error.httpStatusCode = 500;
+      // return next(error);
     });
 };
 
@@ -96,12 +170,14 @@ exports.postOrder = (req, res, next) => {
       return order.save();
     })
     .then((result) => {
-      return req.session.user.clearCart();
+      console.log(result);
+      return req.user.clearCart();
     })
     .then(() => {
       res.redirect("/orders");
     })
     .catch((err) => {
+      console.log(err);
       const error = new Error(err);
       error.httpStatusCode = 500;
       return next(error);
@@ -123,6 +199,7 @@ exports.getOrders = (req, res, next) => {
       });
     })
     .catch((err) => {
+      console.log(err);
       const error = new Error(err);
       error.httpStatusCode = 500;
       return next(error);

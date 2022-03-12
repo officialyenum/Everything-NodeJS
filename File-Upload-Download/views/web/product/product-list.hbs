@@ -1,5 +1,6 @@
 <main>
     <h1>Products List</h1>
+
     {{#if hasProducts}}
         <div class="grid">
             {{#each prods}}
@@ -17,8 +18,8 @@
                         </div>
                             <div class="card__actions">
                                 <a href="/products/{{ this._id }}" class="btn"> Detail </a>
-                                {{#if ../isAuthenticated}}    
-                                    {{> addCartBtn product=this }}
+                                {{#if ../isAuthenticated}}   
+                                    {{> addCartBtn product=this token=../csrfToken }}
                                 {{/if}}
                             </div>
                     </header>

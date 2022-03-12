@@ -19,7 +19,7 @@
                         {{!-- use ../ before the value if it is an external value --}}
                         {{#if ../isAuthenticated }}
                             <div class="card__actions">
-                                {{> addCartBtn product=this }}
+                                {{> addCartBtn product=this token=../csrfToken }}
                             </div>
                         {{/if}}
                     </header>
