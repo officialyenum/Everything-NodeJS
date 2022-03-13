@@ -117,5 +117,8 @@ This is basically my Pratical example or implementation on how to build a node J
   - Authorization Checks and Middlewares
 
 - [Async-Await]
+  - Transforming "then - catch" to "async - await"
+
+- [WebSockets-and-SocketIO]
   - 
 
