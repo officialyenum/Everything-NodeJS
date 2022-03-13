@@ -62,7 +62,14 @@ mongoose
   .connect(process.env.MONGODB_URI)
   .then((result) => {
     console.log("connected to mongo db");
-    app.listen(process.env.PORT);
+    const server = app.listen(process.env.PORT);
+    const io = require('./socket').init(server);
+    io.on('connection', (socket) => {
+        console.log('a user connected');
+        socket.on('disconnect', () => {
+            console.log('user disconnected');
+        });
+    });
     console.log("connected on port "+process.env.PORT);
   })
   .catch((err) => {
