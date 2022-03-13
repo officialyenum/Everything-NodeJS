@@ -120,5 +120,10 @@ This is basically my Pratical example or implementation on how to build a node J
   - Transforming "then - catch" to "async - await"
 
 - [WebSockets-and-SocketIO]
-  - 
+  - Setup
+  - Establishing Connection
+  - Realtime with emit and broadcast
+
+- [GraphQL]
+  - Setup
 
