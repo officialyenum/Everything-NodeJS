@@ -100,3 +100,22 @@ This is basically my Pratical example or implementation on how to build a node J
   - adding checkout Page
   - setting up stripe
 
+- [Rest-Api]:
+  - Sending Get and Post Requests
+  - Fixing Clients and CORS Errors
+
+- [Advanced-Rest-Api]:
+  - Setting up React Frontend
+  - Planning the Api
+  - Serverside Validation
+  - Model Setup
+  - Database Storage
+  - Static Images & Error Handling
+  - Uploading Images
+  - Pagination
+  - Authentication with JWT(Json Web Token)
+  - Authorization Checks and Middlewares
+
+- [Async-Await]
+  - 
+

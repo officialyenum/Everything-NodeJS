@@ -1,9 +1,8 @@
 const path = require("path");
-
 const express = require("express");
 const mongoose = require("mongoose");
-const session = require("express-session");
 const MongoDBStore = require("connect-mongodb-session")(session);
+const session = require("express-session");
 const csrf = require("csurf");
 const bodyParser = require("body-parser");
 const expressHbs = require("express-handlebars");
