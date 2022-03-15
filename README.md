@@ -134,9 +134,11 @@ This is basically my Pratical example or implementation on how to build a node J
 - [Deployment]
   - Using Environment Variables
   - Using Production Api Keys
-  - Setting Secure Response Headers with Helmet
-  - Compressing Assets
-  - Setting up Request Logging
+  - Setting Secure Response Headers with Helmet - (npm install --save helmet)
+  - Compressing Assets (npm install --save compression)
+  - Setting up Request Logging (npm install --save morgan)
   - Deploying Api's
   
+- [Testing]
+  - 
 
