@@ -51,7 +51,7 @@ This is basically my Pratical example or implementation on how to build a node J
   - adding csrf protection
   - flashing success or error messages
 
-- [Sending-Emails]:
+- [Sending-Emails]: - npm install --save nodemailer nodemailer-sendgrid-transport
 
   - setup using nodemailer and sendgrid
 
@@ -61,7 +61,7 @@ This is basically my Pratical example or implementation on how to build a node J
   - token creation
   - password update logic
 
-- [Validation]:
+- [Validation]: npm install --save express-validator
   - set up
   - validation error messages
   - custom validators
@@ -96,7 +96,7 @@ This is basically my Pratical example or implementation on how to build a node J
   - adding client side js code
   - sending and handling background requests
 
-- [Payment-With-Stripe]:
+- [Payment-With-Stripe]: - npm install --save stripe
   - adding checkout Page
   - setting up stripe
 
@@ -104,7 +104,7 @@ This is basically my Pratical example or implementation on how to build a node J
   - Sending Get and Post Requests
   - Fixing Clients and CORS Errors
 
-- [Advanced-Rest-Api]:
+- [Advanced-Rest-Api] - npm install --save jsonwebtoken multer
   - Setting up React Frontend
   - Planning the Api
   - Serverside Validation
@@ -119,11 +119,24 @@ This is basically my Pratical example or implementation on how to build a node J
 - [Async-Await]
   - Transforming "then - catch" to "async - await"
 
-- [WebSockets-and-SocketIO]
+- [WebSockets-and-SocketIO] - npm install --save socket.io {{in react: socket.io-client}} 
+
   - Setup
   - Establishing Connection
   - Realtime with emit and broadcast
 
-- [GraphQL]
+- [GraphQL] - npm install --save graphql express-graphql validator
   - Setup
+  - GraphQL VS Rest
+  - Schema and Resolvers
+  - Root and Mutation Query
+
+- [Deployment]
+  - Using Environment Variables
+  - Using Production Api Keys
+  - Setting Secure Response Headers with Helmet
+  - Compressing Assets
+  - Setting up Request Logging
+  - Deploying Api's
+  
 
