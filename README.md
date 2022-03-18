@@ -139,6 +139,15 @@ This is basically my Pratical example or implementation on how to build a node J
   - Setting up Request Logging (npm install --save morgan)
   - Deploying Api's
   
-- [Testing]
-  - 
+- [Testing] (npm install --save-dev chai mocha)
+  - Setup
+  - Testing Auth Middleware
+  - Organizing Multiple Tests
+  - What Not to Tests
+  - Using stubs (npm install --save-dev sinon)
+  - Testing Controllers, Async Code
+  - Setup Testing Database
+  - Testing with Active Database
+  - Hooks
+  - Testing Code That Requires Authentication
 
