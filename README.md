@@ -151,3 +151,10 @@ This is basically my Pratical example or implementation on how to build a node J
   - Hooks
   - Testing Code That Requires Authentication
 
+- [ES-Modules] 
+  - setting up in package.json
+  - import and export usage
+
+- [Typescript]
+  - setting up typescript (npm install --save typescript)
+
