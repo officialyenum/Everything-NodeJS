@@ -155,6 +155,17 @@ This is basically my Pratical example or implementation on how to build a node J
   - setting up in package.json
   - import and export usage
 
-- [Typescript]
+- [Typescript] (sudo npm install -g typescript)
   - setting up typescript (npm install --save typescript)
+  [TYPESCRIPT-NODE]
+    - tsc —init // initialise typescript
+    - npm init //initialise package.json
+    - npm install --save express body-parser
+    - npm install —save-dev @types/node
+    - npm install —save-dev @types/express
+
+    In tsconfig.json :
+      “target”:”es6”,
+      “module”:”commonJs”,
+      “moduleResolution”:”node”
 
