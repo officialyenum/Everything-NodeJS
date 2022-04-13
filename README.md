@@ -169,3 +169,7 @@ This is basically my Pratical example or implementation on how to build a node J
       “module”:”commonJs”,
       “moduleResolution”:”node”
 
+- [Deno] 
+  - setting up in package.json
+  - import and export usage
+
