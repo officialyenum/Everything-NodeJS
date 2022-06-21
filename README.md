@@ -169,7 +169,7 @@ This is basically my Pratical example or implementation on how to build a node J
       “module”:”commonJs”,
       “moduleResolution”:”node”
 
-- [Deno] 
-  - setting up in package.json
-  - import and export usage
+- [Deno] (brew install deno)
+  - to start a deno app run the following command >> deno run app.ts
+  - Runtime (Namespace) Api
 
